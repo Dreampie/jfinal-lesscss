@@ -1,4 +1,4 @@
-jfinal-slf4j
+jfinal-lesscss
 ============
 
-jfinal  slf4j  log api
+jfinal  lesscss   plugin
