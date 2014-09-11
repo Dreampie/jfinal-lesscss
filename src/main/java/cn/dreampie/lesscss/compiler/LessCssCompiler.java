@@ -194,7 +194,7 @@ public class LessCssCompiler extends AbstractLessCss {
           if ((force || !output.exists() || output.lastModified() < lessLastModified) && lastErrorModified < lessLastModified) {
             lastErrorModified = lessLastModified;
             long compilationStarted = System.currentTimeMillis();
-            logger.info("Compiling LESS source: " + file + "...");
+            logger.info("Compiling LESS source: " + file);
             if (lessCompiler instanceof LessCompiler) {
               ((LessCompiler) lessCompiler).compile(lessSource, output, force);
             } else {
