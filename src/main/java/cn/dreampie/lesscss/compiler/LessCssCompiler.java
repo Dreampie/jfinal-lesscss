@@ -91,7 +91,7 @@ public class LessCssCompiler extends AbstractLessCss {
   /**
    * Execute the MOJO.
    *
-   * @throws cn.dreampie.common.plugin.lesscss.compiler.LessCssException if something unexpected occurs.
+   * @throws cn.dreampie.lesscss.compiler.LessCssException if something unexpected occurs.
    */
   public void execute() throws LessCssException {
     if (logger.isDebugEnabled()) {
@@ -191,7 +191,7 @@ public class LessCssCompiler extends AbstractLessCss {
         try {
           LessSource lessSource = new LessSource(input);
           long lessLastModified = lessSource.getLastModifiedIncludingImports();
-          if ((force || !output.exists() || output.lastModified() < lessLastModified) && lastErrorModified < lessLastModified) {
+          if (!output.exists() || (force || output.lastModified() < lessLastModified) && lastErrorModified < lessLastModified) {
             lastErrorModified = lessLastModified;
             long compilationStarted = System.currentTimeMillis();
             logger.info("Compiling LESS source: " + file);
