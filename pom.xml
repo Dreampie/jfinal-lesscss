@@ -8,6 +8,7 @@
   <artifactId>jfinal-lesscss</artifactId>
   <version>0.1</version>
   <packaging>jar</packaging>
+  <name>jfinal-lesscss</name>
   <description>jfinal lesscss plugins</description>
   <url>https://github.com/Dreampie/jfinal-lesscss</url>
 
