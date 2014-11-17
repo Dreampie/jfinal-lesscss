@@ -14,16 +14,14 @@ import java.util.Map;
 /**
  * Createdby wangrenhui on 2014/7/11.
  */
-public class LessCssList extends AbstractLessCss {
+public class LessCssTree extends AbstractLessCss {
 
   private Logger logger = LoggerFactory.getLogger(getClass());
 
   public void execute() {
-    if (logger.isDebugEnabled()) {
-      logger.debug("sourceDirectory = " + sourceDirectory);
-      logger.debug("includes = " + Arrays.toString(includes));
-      logger.debug("excludes = " + Arrays.toString(excludes));
-    }
+    logger.info("sourceDirectory = " + sourceDirectory);
+    logger.info("includes = " + Arrays.toString(includes));
+    logger.info("excludes = " + Arrays.toString(excludes));
 
     String[] files = getIncludedFiles();
 

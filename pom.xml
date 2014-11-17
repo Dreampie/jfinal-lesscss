@@ -44,9 +44,9 @@
   <properties>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
-    <jfinal.version>1.8</jfinal.version>
+    <jfinal.version>1.9</jfinal.version>
     <lesscss.version>1.7.0.1.1</lesscss.version>
-    <less.version>1.7.3</less.version>
+    <!--<less.version>1.7.3</less.version>-->
     <jfinal-slf4j.version>0.1</jfinal-slf4j.version>
     <rhino.version>1.7R4</rhino.version>
     <plexus-container.version>1.5.5</plexus-container.version>
