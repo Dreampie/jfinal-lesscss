@@ -60,13 +60,7 @@
       <groupId>com.jfinal</groupId>
       <artifactId>jfinal</artifactId>
       <version>${jfinal.version}</version>
-    </dependency>
-
-    <!--动态css-->
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>less</artifactId>
-      <version>${less.version}</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
