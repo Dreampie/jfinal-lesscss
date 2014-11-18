@@ -54,10 +54,10 @@ public class LessCssPlugin implements IPlugin {
 
   @Override
   public boolean start() {
-    LessExecuteThread run = new LessExecuteThread(lessCssCompiler, restartInterval);
-    LessExecuteListener listen = new LessExecuteListener(run);
-    run.addObserver(listen);
-    new Thread(run).start();
+    LessExecuteThread thread = new LessExecuteThread(lessCssCompiler, restartInterval);
+    LessExecuteListener listen = new LessExecuteListener(thread);
+    thread.addObserver(listen);
+    new Thread(thread).start();
     return true;
   }
 

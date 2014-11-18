@@ -22,65 +22,46 @@ public class LessCssCompiler extends AbstractLessCss {
   private Object lessCompiler;
   /**
    * The directory for compiled CSS stylesheets.
-   * <p/>
-   * parameter expression="${lesscss.outputDirectory}" default-value="${project.build.directory}"
-   * required
    */
   protected File outputDirectory;
 
   /**
    * When <code>true</code> the LESS compiler will compress the CSS stylesheets.
-   * <p/>
-   * parameter expression="${lesscss.compress}" default-value="false"
    */
   private boolean compress;
 
   /**
    * When <code>true</code> the plugin will watch for changes in LESS files and compile if it detects one.
-   * <p/>
-   * parameter expression="${lesscss.watch}" default-value="false"
    */
   protected boolean watch = false;
 
   /**
    * When <code>true</code> the plugin will watch for changes in LESS files and compile if it detects one.
-   * <p/>
-   * parameter expression="${lesscss.watchInterval}" default-value="1000"
    */
   private int watchInterval = 1000;
 
   /**
    * The character encoding the LESS compiler will use for writing the CSS stylesheets.
-   * <p/>
-   * parameter expression="${lesscss.encoding}" default-value="${project.build.sourceEncoding}"
    */
   private String encoding;
 
   /**
    * When <code>true</code> forces the LESS compiler to always compile the LESS sources. By default LESS sources are only compiled when modified (including imports) or the CSS stylesheet does not exists.
-   * <p/>
-   * parameter expression="${lesscss.force}" default-value="false"
    */
   private boolean force;
 
   /**
    * The location of the LESS JavasSript file.
-   * <p/>
-   * parameter
    */
   private File lessJs;
 
   /**
    * The location of the NodeJS executable.
-   * <p/>
-   * parameter
    */
   private String nodeExecutable;
 
   /**
    * The format of the output file names.
-   * <p/>
-   * parameter
    */
   private String outputFileFormat;
 
@@ -94,22 +75,15 @@ public class LessCssCompiler extends AbstractLessCss {
    * @throws cn.dreampie.lesscss.compiler.LessCssException if something unexpected occurs.
    */
   public void execute() throws LessCssException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("sourceDirectory = " + sourceDirectory);
-      logger.debug("outputDirectory = " + outputDirectory);
-      logger.debug("includes = " + Arrays.toString(includes));
-      logger.debug("excludes = " + Arrays.toString(excludes));
-      logger.debug("force = " + force);
-      logger.debug("lessJs = " + lessJs);
-      logger.debug("skip = " + skip);
-    }
+    logger.info("sourceDirectory = " + sourceDirectory);
+    logger.info("outputDirectory = " + outputDirectory);
+    logger.debug("includes = " + Arrays.toString(includes));
+    logger.debug("excludes = " + Arrays.toString(excludes));
+    logger.debug("force = " + force);
+    logger.debug("lessJs = " + lessJs);
+    logger.debug("skip = " + skip);
 
     if (!skip) {
-//          Akka.system().scheduler().scheduleOnce(Duration.create(watchInterval, TimeUnit.MILLISECONDS),
-//                    new Runnable() {
-//                        @Override
-//                        public void run() {
-
       if (watch) {
         logger.info("Watching " + sourceDirectory);
         if (force) {
@@ -128,16 +102,12 @@ public class LessCssCompiler extends AbstractLessCss {
       } else {
         executeInternal();
       }
-//                        }
-//                    }, Akka.system().dispatcher());
     } else {
       logger.info("Skipping plugin execution per configuration");
     }
   }
 
   private void executeInternal() throws LessCssException {
-    long start = System.currentTimeMillis();
-
     String[] files = getIncludedFiles();
 
     if (files == null || files.length < 1) {
@@ -148,26 +118,7 @@ public class LessCssCompiler extends AbstractLessCss {
       }
 
       Object lessCompiler = initLessCompiler();
-//            if (watch) {
-//                logger.info("Watching " + sourceDirectory);
-//                if (force) {
-//                    force = false;
-//                    logger.info("Disabled the 'force' flag in watch mode.");
-//                }
-//                Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
-//                while (watch && !Thread.currentThread().isInterrupted()) {
-//                    compileIfChanged(files, lessCompiler);
-//                    try {
-//                        Thread.sleep(watchInterval);
-//                    } catch (InterruptedException e) {
-//                        logger.error("interrupted");
-//                    }
-//                }
-//            } else {
       compileIfChanged(files, lessCompiler);
-//            }
-
-//            logger.info("Complete Less compile job finished in " + (System.currentTimeMillis() - start) + " ms");
     }
   }
 
